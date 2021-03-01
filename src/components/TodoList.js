@@ -9,9 +9,13 @@ function TodoList() {
     const [editObj, setEditObj] = useState({})
 
     const handleInputChange = (e) => {
+        e.preventDefault()
         const { value } = e.target
         setAddText(value)
+        if(e.nativeEvent.keyCode === 13) {
 
+            console.log(13)
+        }
     }
     const addTodo = (addText) => {
         // 卡1- 這邊要這樣寫
@@ -61,11 +65,15 @@ function TodoList() {
             }
         })
     }
-    const handleEnterKey = (e,item) => {
-        console.log(e, item)
-        // if(e.nativeEvent.keyCode === 13) {
-        //     console.log('13')
-        // }
+    const handleEnterKey = (event, state) => {
+        event.preventDefault();
+        if(event.nativeEvent.keyCode === 13) {
+
+            console.log(13)
+            if(state === 'add') {
+                console.log('add')
+            }
+        }
     }
 
     return (
@@ -77,7 +85,6 @@ function TodoList() {
                         className='input' 
                         value={addText} 
                         onChange={handleInputChange}  
-                        onKeyPress={() => handleEnterKey('add')} 
                     />
                     <button type="button" onClick={() => addTodo(addText)}>Submit</button>
                 </form>
