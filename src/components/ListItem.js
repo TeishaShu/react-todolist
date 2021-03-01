@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const ListItem = ({item, handleEdit, handleEditChange, editObj, handleEditCheck, removeItem}) => {
+const ListItem = ({item, handleEdit, handleEditChange, editObj, handleEditCheck, removeItem, handleEnterKey}) => {
     
 
     return (
@@ -8,7 +8,7 @@ const ListItem = ({item, handleEdit, handleEditChange, editObj, handleEditCheck,
             <div className="txt">
                 <input type="checkbox"/>
                 {item.isEdit || (<span> {item.text} </span>)}
-                {item.isEdit && (<input type="text" value={editObj.text} onChange={handleEditChange} />)}
+                {item.isEdit && (<input type="text" value={editObj.text} onChange={handleEditChange} onKeyPress={handleEnterKey} />)}
             </div>
             <div>
                 {/* 這邊帶值的方式 */}

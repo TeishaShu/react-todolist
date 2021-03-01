@@ -61,12 +61,24 @@ function TodoList() {
             }
         })
     }
+    const handleEnterKey = (e,item) => {
+        console.log(e, item)
+        // if(e.nativeEvent.keyCode === 13) {
+        //     console.log('13')
+        // }
+    }
 
     return (
         <div className='wrapper'>
             <div className='card frame'>
                 <form>
-                    <input type='text' className='input' value={addText} onChange={handleInputChange} />
+                    <input 
+                        type='text' 
+                        className='input' 
+                        value={addText} 
+                        onChange={handleInputChange}  
+                        onKeyPress={() => handleEnterKey('add')} 
+                    />
                     <button type="button" onClick={() => addTodo(addText)}>Submit</button>
                 </form>
                 <ul className='list-wrapper'>
@@ -79,6 +91,7 @@ function TodoList() {
                             editObj={editObj} 
                             handleEditCheck={handleEditCheck}
                             removeItem={removeItem} 
+                            handleEnterKey={handleEnterKey}
                         />
                     ))}
                 </ul>
